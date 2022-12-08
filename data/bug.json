@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "anyOf": [
+    {
+      "if": {
+        "properties": {
+          "type_discriminator": {
+            "const": "my_type"
+          }
+        }
+      },
+      "then": {
+        "$ref": "#/definitions/b"
+      }
+    }
+  ],
+  "definitions": {
+    "b": {
+      "type": "object",
+      "properties": {
+        "type_discriminator": {
+          "const": "my_type"
+        }
+      },
+      "required": [
+        "type_discriminator"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
