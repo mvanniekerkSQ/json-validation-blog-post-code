@@ -17,6 +17,9 @@ type EventBase = {
     version: "1.0.0",
 }
 
+/**
+ * @discriminator eventType
+ */
 export type RfqEvent
     = EventInit
     | EventQuote

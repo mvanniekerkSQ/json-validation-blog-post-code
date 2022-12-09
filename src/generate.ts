@@ -1,7 +1,7 @@
-import * as tsj from "ts-json-schema-generator";
-import {Config} from "ts-json-schema-generator";
+import {Config, createFormatter, createParser, createProgram, SchemaGenerator} from "ts-json-schema-generator";
 import fs from "node:fs";
 import path from "node:path";
+import {UnionTypeFormatterWithDiscriminatorFix} from "./unionTypeFormatterWithDiscriminatorFix";
 
 async function writeFile(pathStr: string, data: any) {
     return new Promise<void>((resolve, reject) => {
@@ -22,6 +22,12 @@ const config: Config = {
     jsDoc: "extended",
 }
 
-const schema = tsj.createGenerator(config).createSchema(config.type);
+const formatter = createFormatter(config, (fmt, circularReferenceTypeFormatter) => {
+    fmt.addTypeFormatter(new UnionTypeFormatterWithDiscriminatorFix(circularReferenceTypeFormatter));
+});
+const program = createProgram(config);
+const parser = createParser(program, config);
+const generator = new SchemaGenerator(program, parser, formatter, config);
+const schema = generator.createSchema(config.type);
 const schemaString = JSON.stringify(schema, undefined, 2);
 writeFile("schema/rfq-event.json", schemaString);
