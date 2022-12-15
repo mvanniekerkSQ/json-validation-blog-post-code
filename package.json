@@ -1,15 +1,14 @@
 {
   "name": "ajv-bug",
   "version": "1.0.0",
-  "description": "",
+  "description": "Code for the JSON Schema data validation blog post",
   "main": "src/validate.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "validate": "ts-node src/validate.ts",
     "generate": "ts-node src/generate.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Matthijs van Niekerk",
   "license": "ISC",
   "dependencies": {
     "ajv": "^8.11.2",

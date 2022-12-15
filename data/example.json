@@ -6,7 +6,5 @@
 	"price": -1.7976931348623157e+308,
 	"eventType": "init",
 	"id": "53Ba1413-98e8-A4A2-9b0c-20E3D64e3128",
-	"version": "1.0.0",
-	"extra": "property",
-	"anotherExtra": "property"
+	"version": "1.0.0"
 }
